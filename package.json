@@ -1,0 +1,19 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.10.1",
+    "koa": "^1.2.0",
+    "koa-router": "^5.4.0",
+    "koa-views": "^4.1.0",
+    "markdown": "^0.5.0",
+    "nunjucks": "^2.4.2"
+  }
+}
