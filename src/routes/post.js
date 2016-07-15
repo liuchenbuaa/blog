@@ -1,7 +1,9 @@
-var router = require('koa-router');
+var router = require('koa-router')();
 
-router.get('/list', async(ctx,next)=>{
-    console.log("+++++list");
+router.post('/list', async (ctx,next)=>{
+    console.log(ctx);
+    console.log("-----list2");
+    ctx.body="hello world";
 });
 
 export default router;
