@@ -1,5 +1,6 @@
 var router = require('koa-router')();
 var assert = require('assert');
+var markdown = require('markdown').markdown;
 
 router.post('/list', async (ctx,next)=>{
     console.log(ctx);
@@ -25,6 +26,12 @@ router.get('/index', async (ctx,next)=>{
       //callback(result);
     });
     await ctx.render('post', {});
+});
+
+router.get('/markdown', async (ctx,next)=>{
+    console.log("+++markdown called");
+    var md_content = "Hello.\n\n* This is markdown.\n* It is fun\n* Love it or leave it.";
+    ctx.body = markdown.toHTML(md_content);
 });
 
 export default router;
