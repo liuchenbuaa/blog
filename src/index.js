@@ -1,13 +1,18 @@
 var koa = require('koa');
 var views = require('koa-views');
+var mongo = require('./mongo');
 var app = new koa();
 
 app.use(views(__dirname + '/views',{
     map: {html: 'nunjucks'}
 }));
 
+app.use(mongo.default);
+
+/*
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
+
 
 // Connection URL
 var url = 'mongodb://127.0.0.1/person';
@@ -34,6 +39,7 @@ var insertDocuments = function(db, callback) {
     callback(result);
   });
 }
+*/
 
 //app.use(require('koa-bodyparser')());
 require('./routes').default(app);
