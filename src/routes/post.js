@@ -10,4 +10,8 @@ router.get('/post', async (ctx,next)=>{
     await ctx.render('post', {});
 });
 
+router.get('index', async (ctx,next)=>{
+    await ctx.render('post', {});
+});
+
 export default router;
