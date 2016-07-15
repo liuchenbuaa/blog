@@ -6,4 +6,8 @@ router.post('/list', async (ctx,next)=>{
     ctx.body="hello world";
 });
 
+router.get('/post', async (ctx,next)=>{
+    await ctx.render('post', {});
+});
+
 export default router;
