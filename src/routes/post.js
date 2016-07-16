@@ -34,4 +34,8 @@ router.get('/markdown', async (ctx,next)=>{
     ctx.body = markdown.toHTML(md_content);
 });
 
+router.get('/bootstrap', async (ctx,next)=>{
+    await ctx.render('index',{});
+})
+
 export default router;
