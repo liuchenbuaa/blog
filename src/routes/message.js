@@ -2,18 +2,25 @@ var router = require('koa-router')();
 var assert = require('assert');
 var markdown = require('markdown').markdown;
 
+var findDocuments = function(collection,offset,pagesize){
+  return new Promise((resolve,reject)=>{
+    collection.find({}).skip(offset).limit(parseInt(pagesize)).project({}).toArray(function(err,docs){
+        if(err){
+          reject(err);
+        }else{
+          resolve(docs);
+        }
+    });
+  })
+}
+
 router.post('/list', async (ctx,next)=>{
     var {page = 1,pagesize = 10} = ctx.request.body;
     var offset = (page - 1) * pagesize;
     if(page && pagesize){
         var collection = ctx.mongo.collection('messages');
-        collection.find([
-          {}
-        ], {limit:pagesize,skip:offset} ,function(err, result) {
-            assert.equal(err, null);
-            console.log(result);
-        });
-        ctx.body = {success:true};
+        var data = await findDocuments(collection,offset,pagesize);
+        ctx.body = {success:true,data};
     }else{
         ctx.body = {success:false};
     }
